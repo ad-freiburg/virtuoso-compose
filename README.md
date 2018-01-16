@@ -10,7 +10,12 @@ not set up see [here](https://docs.docker.com/compose/install/).
 
 Then in the checked out repository run:
 ```bash
-docker-compose up
+docker-compose up -d
 ```
 it should take care of setting up containers as well as downloading the
 necessary data.
+
+To view the log run
+```bash
+docker-compose logs -f
+```
