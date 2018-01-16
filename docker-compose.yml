@@ -1,0 +1,21 @@
+version: "2"
+services:
+  virtuoso:
+    build:
+      context: .
+      dockerfile: Dockerfile.virtuoso
+    ports:
+      - "8999:8999"
+    volumes:
+      - ./virtuoso-db:/data
+  varnish:
+    build:
+      context: .
+      dockerfile: Dockerfile.varnish
+    depends_on:
+      - virtuoso
+    tmpfs:
+      - /tmp
+    ports:
+      - "9000:9000"
+
