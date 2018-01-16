@@ -4,8 +4,8 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.virtuoso
-    ports:
-      - "8999:8999"
+    expose:
+      - "8999"
     volumes:
       - ./virtuoso-db:/data
   varnish:
