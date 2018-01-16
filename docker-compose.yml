@@ -2,16 +2,16 @@ version: "2"
 services:
   virtuoso:
     build:
-      context: .
-      dockerfile: Dockerfile.virtuoso
+      context: virtuoso
+    restart: unless-stopped
     expose:
       - "8999"
     volumes:
       - ./virtuoso-db:/data
   varnish:
     build:
-      context: .
-      dockerfile: Dockerfile.varnish
+      context: varnish
+    restart: unless-stopped
     depends_on:
       - virtuoso
     tmpfs:
