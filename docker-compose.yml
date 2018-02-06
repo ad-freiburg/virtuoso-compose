@@ -1,6 +1,7 @@
 version: "2"
 services:
   virtuoso:
+    image: niklas88/virtuoso-freebase
     build:
       context: virtuoso
     restart: unless-stopped
@@ -9,6 +10,7 @@ services:
     volumes:
       - ./virtuoso-db:/data
   varnish:
+    image: niklas88/varnish-virtuoso
     build:
       context: varnish
     restart: unless-stopped
