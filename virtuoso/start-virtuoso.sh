@@ -12,4 +12,6 @@ if [ -f /data/virtuoso.db ]; then
 	/app/bin/virtuoso-t -f +configfile /app/virtuoso.ini
 else
 	echo "Couldn't find virtuoso.db even after auto-download"
+	echo "ls -la /data"
+	ls -la /data
 fi
