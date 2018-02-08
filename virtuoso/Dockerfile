@@ -8,9 +8,9 @@ RUN mkdir /source
 RUN mkdir /app
 
 # Build/Install virtuoso
-RUN git clone https://github.com/openlink/virtuoso-opensource.git /source/
+RUN git clone --branch stable/7 --depth 1 https://github.com/openlink/virtuoso-opensource.git /source/
 WORKDIR /source
-RUN git checkout stable/7 && ./autogen.sh && ./configure --prefix=/app/
+RUN ./autogen.sh && ./configure --prefix=/app/
 RUN make -j && make install
 
 COPY virtuoso.ini start-virtuoso.sh /app/
