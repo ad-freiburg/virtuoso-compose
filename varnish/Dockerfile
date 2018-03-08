@@ -1,6 +1,5 @@
 FROM ubuntu:16.04
-RUN apt-get update 
-RUN apt-get install -y varnish 
+RUN apt-get update && apt-get install -y varnish 
 RUN mkdir /app
 
 COPY varnish.vcl /app/

@@ -1,6 +1,5 @@
 FROM ubuntu:16.04
-RUN apt-get update 
-RUN apt-get install -y build-essential autotools-dev autoconf automake unzip \
+RUN apt-get update && apt-get install -y build-essential autotools-dev autoconf automake unzip \
     wget net-tools libtool git flex bison gawk m4 libreadline-dev openssl crudini gperf libssl-dev
 # Mount point for integrating data volumes
 RUN mkdir /data
