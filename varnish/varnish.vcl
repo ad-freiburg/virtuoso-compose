@@ -41,6 +41,11 @@ sub vcl_deliver {
     # Happens when we have all the pieces we need, and are about to send the
     # response to the client.
     #
+
+    # Set CORS headers so snorql works
+    set resp.http.Access-Control-Allow-Origin = "*";
+    set resp.http.Access-Control-Allow-Methods = "GET, OPTIONS";
+    set resp.http.Access-Control-Allow-Headers = "Origin, Accept, Content-Type, X-Requested-With, X-CSRF-Token";
     # You can do accounting or modifying the final object here.
     return(deliver);
 }
