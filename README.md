@@ -35,3 +35,22 @@ To view the log run
 ```bash
 docker-compose logs -f
 ```
+
+Loading a Full Freebase RDF Dump
+--------------------------------
+**Note this part is work in progress and there will be additional cleanup steps
+needed**
+To load a full Freebase Dump the following steps are necessary. This part is
+based on the instructions
+[here](https://github.com/sameersingh/nlp_serde/wiki/Virtuoso-Freebase-Setup)
+
+First change `virtuoso/virtuoso.ini` so it doesn't download the binary virtuoso
+data and in `docker-compose.yaml` change the `volume` part of virtuoso to use
+the `virtuoso-full-db` path. Then
+
+    # docker-compose up -d --build virtuoso
+    # docker-compose exec virtuoso bash
+    root@XYZ# isql
+    SQL> ld_dir('/input/', 'freebase-rdf-latest', 'http://freebase.com');
+    SQL> select * from DB.DBA.load_list; # check if it registered
+    SQL> rdf_loader_run();
