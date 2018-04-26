@@ -14,6 +14,8 @@ RUN make -j && make install
 
 COPY virtuoso.ini start-virtuoso.sh /app/
 WORKDIR /app/
+ENV PATH=/app/bin/:$PATH
 EXPOSE 8999
+VOLUME ["/data", "/input"]
 CMD ["/app/start-virtuoso.sh"]
 
