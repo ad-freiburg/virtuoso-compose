@@ -7,8 +7,11 @@ services:
     restart: unless-stopped
     expose:
       - "8999"
+    ports:
+      - "8999:8999"
     volumes:
-      - ./virtuoso-db:/data
+      - ./virtuoso-full-db:/data
+      - /nfs/datasets/freebase:/input
   varnish:
     image: niklas88/varnish-virtuoso
     build:
@@ -18,6 +21,8 @@ services:
       - virtuoso
     tmpfs:
       - /tmp
+    expose:
+      - "9000"
     ports:
       - "9000:9000"
 
