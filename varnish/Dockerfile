@@ -1,8 +1,12 @@
-FROM ubuntu:16.04
-RUN apt-get update && apt-get install -y varnish 
+FROM ubuntu:18.04
+RUN apt-get update && apt-get install -y varnish
 RUN mkdir /app
 
+ARG BACKEND_HOST=virtuoso
+ARG BACKEND_PORT=8999
 COPY varnish.vcl /app/
+RUN sed -i "s/<BACKEND_HOST>/$BACKEND_HOST/g;s/<BACKEND_PORT>/$BACKEND_PORT/g" /app/varnish.vcl
+
 WORKDIR /app/
 EXPOSE 9000
 CMD ["/usr/sbin/varnishd", "-a", "0.0.0.0:9000", "-f", "/app/varnish.vcl",\

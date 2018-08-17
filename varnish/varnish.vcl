@@ -5,8 +5,8 @@ vcl 4.0;
 
 # Default backend definition. Set this to point to your content server.
 backend default {
-    .host = "virtuoso";
-    .port = "8999";
+    .host = "<BACKEND_HOST>";
+    .port = "<BACKEND_PORT>";
     .connect_timeout = 90s;
     .between_bytes_timeout = 30s;
 }
