@@ -10,7 +10,7 @@ services:
     ports:
       - "8999:8999"
     volumes:
-      - ./virtuoso-full-db:/data
+      - ./virtuoso-db:/data
       - /nfs/datasets/freebase:/input
   varnish:
     image: niklas88/varnish-virtuoso
