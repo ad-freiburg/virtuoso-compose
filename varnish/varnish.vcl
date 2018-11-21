@@ -16,9 +16,16 @@ sub vcl_recv {
     #
     # Typically you clean up the request here, removing cookies you don't need,
     # rewriting the request, etc.
+    unset req.http.Host;
 
     # Just put everything in cache.
     return(hash);
+}
+
+sub vcl_hash {
+    # we only care about the URL for SPARQL backends
+    hash_data(req.url);
+    return (lookup);
 }
 
 sub vcl_backend_response {
