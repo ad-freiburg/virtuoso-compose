@@ -44,7 +44,7 @@ To load a full Freebase Dump the following steps are necessary. This part is
 based on the instructions
 [here](https://github.com/sameersingh/nlp_serde/wiki/Virtuoso-Freebase-Setup)
 
-First change `virtuoso/virtuoso.ini` so it doesn't download the binary virtuoso
+First change `virtuoso/start-virtuoso.sh` so it doesn't download the binary virtuoso
 data and in `docker-compose.yaml` change the `volume` part of virtuoso to use
 the `virtuoso-full-db` path. Then
 
